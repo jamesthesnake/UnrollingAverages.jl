@@ -1,4 +1,4 @@
-# UnrollingAverages
+# <img src="https://github.com/InPhyT/UnrollingAverages.jl/blob/main/docs/src/assets/logo.png?raw=true" width="50" height="50"> &nbsp; UnrollingAverages.jl 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/InPhyT/UnrollingAverages.jl/blob/main/LICENSE)
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/stable)
@@ -28,7 +28,7 @@ The package exports a single function called `unroll`: it returns a `Vector` who
 unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_natural::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
 ```
 
-**Arguments**:
+### Arguments
 
 - `moving_average`: the time series representing the moving average to unroll ;
 - `window`: the width of the moving average ;
@@ -38,8 +38,8 @@ unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = n
 A few remarks:
 
 1. If `isnothing(initial_conditions)`:
-   - `if assert_natural`, then an internal `unroll_iterative` method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a julia  to read details ;
-   - `if !assert_natural`, then an internal `unroll_linear_approximation` method is called. See this [StackExchange post](https://stats.stackexchange.com/a/68002). NB: this is an approximated method, it will generally not return the exact original time series ;
+   - `if assert_natural`, then an internal `unroll_iterative` method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a Julia  to read further details;
+   - `if !assert_natural`, then an internal `unroll_linear_approximation` method is called. See this [StackExchange post](https://stats.stackexchange.com/a/68002). NB: this is an approximated method, it will generally not return the exact original time series;
 2. If `typeof(initial_conditions) <: Ntuple{window-1, <:Union{Int64,Float64}}`, then an internal `unroll_recursive` method is called, which exactly recovers the time series. Mathematical details about this function are reported in the [documentation](https://InPhyT.github.io/UnrollingAverages.jl/stable), and you may read more by entering `?UnrollingAverages.unroll_recursive`.
 
 ## Future Developments
@@ -53,7 +53,7 @@ If you wish to change or add some functionality, please file an [issue](https://
 
 ## How to Cite 
 
-If you use this data in your work, please cite this repository using the following metadata: 
+If you use this package in your work, please cite this repository using the following metadata: 
 
 ```bib
 @software{Monticone_Moroni_UnrollingAverages_2021,
